@@ -18,7 +18,8 @@ export class Tab1Page {
       duracao: '2h 2m',
       classificacao: 76,
       generos: ['Action', 'Science', 'Fiction', 'Comedy', 'Family', 'Adventure'],
-      thumbnail: 'https://www.themoviedb.org/t/p/w600_and_h900_bestv2/6DrHO1jr3qVrViUO6s6kFiAGM7.jpg'
+      thumbnail: 'https://www.themoviedb.org/t/p/w600_and_h900_bestv2/6DrHO1jr3qVrViUO6s6kFiAGM7.jpg',
+      pagina: '/sonic-the-hedgehog-two'
     },
     {
       nome: 'Spider-Man: No Way Home',
@@ -26,7 +27,8 @@ export class Tab1Page {
       duracao: '2h 28m',
       classificacao: 81,
       generos: ['Action', 'Adventure', 'Science Fiction'],
-      thumbnail: 'https://www.themoviedb.org/t/p/w600_and_h900_bestv2/1g0dhYtq4irTY1GPXvft6k4YLjm.jpg'
+      thumbnail: 'https://www.themoviedb.org/t/p/w600_and_h900_bestv2/1g0dhYtq4irTY1GPXvft6k4YLjm.jpg',
+      pagina: '/spiderman-no-way-home'
     }
   ];
 
