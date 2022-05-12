@@ -1,6 +1,6 @@
 <ion-header [translucent]="true">
   <ion-toolbar color="primary">
-    <ion-title> Videos App </ion-title>
+    <ion-title> {{titulo}} </ion-title>
   </ion-toolbar>
   <ion-toolbar>
     <ion-searchbar animated placeholder="Pesquisa"></ion-searchbar>
@@ -9,22 +9,22 @@
 
 <ion-content [fullscreen]="true" color="light">
   <ion-list>
-    <ion-item-sliding><!-- Sonic the hedgehog 2 -->
+    <ion-item-sliding *ngFor="let filme of listaVideos">
       <ion-item lines="full">
         <ion-thumbnail slot="start">
           <img
-            src="https://www.themoviedb.org/t/p/w600_and_h900_bestv2/6DrHO1jr3qVrViUO6s6kFiAGM7.jpg"
+            [src]="filme.thumbnail"
           />
         </ion-thumbnail>
         <ion-label class="ion-text-wrap">
           <div>
-            <h1>Sonic the Hedgehog 2</h1>
-            <p>04/07/2022 (BR) -- 2h 2m</p>
-            <p>Action, Science Fiction, Comedy, Family, Adventure</p>
+            <h1>{{filme.nome}}</h1>
+            <p>{{filme.lancamento}} - {{filme.duracao}} </p>
+            <ion-badge color="light" *ngFor="let genero of filme.generos">{{genero}}</ion-badge>
           </div>
         </ion-label>
         <ion-chip color="success" outline="true">
-          <ion-label>76%</ion-label>
+          <ion-label>{{filme.classificacao}}</ion-label>
         </ion-chip>
       </ion-item>
       <ion-item-options side="end">
@@ -34,29 +34,5 @@
       </ion-item-options>
     </ion-item-sliding>
 
-    <ion-item-sliding><!-- Spiderman no way home -->
-      <ion-item lines="full">
-        <ion-thumbnail slot="start">
-          <img
-            src="https://www.themoviedb.org/t/p/w600_and_h900_bestv2/1g0dhYtq4irTY1GPXvft6k4YLjm.jpg"
-          />
-        </ion-thumbnail>
-        <ion-label class="ion-text-wrap">
-          <div>
-            <h1>Spider-Man: No Way Home (2021)</h1>
-            <p>12/16/2021 (BR) -- 2h 28m</p>
-            <p>Action, Adventure, Science Fiction</p>
-          </div>
-        </ion-label>
-        <ion-chip color="success" outline="true">
-          <ion-label>81%</ion-label>
-        </ion-chip>
-      </ion-item>
-      <ion-item-options side="end">
-        <ion-item-option (click)="exibirAlertaFavorito()">
-          <ion-icon slot="icon-only" name="star"></ion-icon>
-        </ion-item-option>
-      </ion-item-options>
-    </ion-item-sliding>
   </ion-list>
 </ion-content>
