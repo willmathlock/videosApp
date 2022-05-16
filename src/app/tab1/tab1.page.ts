@@ -1,6 +1,8 @@
+import { GenresService } from './../services/genres.service';
+import { IListaFilmes, IFilmeApi } from './../models/IFilmeAPI.model';
+import { FilmeService } from './../services/filme.service';
 import { DadosService } from './../services/dados.service';
-import { IFilme } from '../models/iFilme.model';
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { AlertController } from '@ionic/angular';
 import { ToastController } from '@ionic/angular';
 import { Router } from '@angular/router';
@@ -10,47 +12,33 @@ import { Router } from '@angular/router';
   templateUrl: 'tab1.page.html',
   styleUrls: ['tab1.page.scss'],
 })
-export class Tab1Page {
-  titulo = 'Vídeos App';
+export class Tab1Page implements OnInit {
+  titulo = 'Filmes';
 
-  listaVideos: IFilme[] = [
-    {
-      nome: 'Sonic the hedgehog 2',
-      lancamento: '04/07/2022',
-      duracao: '2h 2m',
-      classificacao: 76,
-      generos: [
-        'Action',
-        'Science',
-        'Fiction',
-        'Comedy',
-        'Family',
-        'Adventure',
-      ],
-      thumbnail:
-        'https://www.themoviedb.org/t/p/w600_and_h900_bestv2/6DrHO1jr3qVrViUO6s6kFiAGM7.jpg',
-      pagina: '/sonic-the-hedgehog-two',
-    },
-    {
-      nome: 'Spider-Man: No Way Home',
-      lancamento: '12/16/2021',
-      duracao: '2h 28m',
-      classificacao: 81,
-      generos: ['Action', 'Adventure', 'Science Fiction'],
-      thumbnail:
-        'https://www.themoviedb.org/t/p/w600_and_h900_bestv2/1g0dhYtq4irTY1GPXvft6k4YLjm.jpg',
-      pagina: '/spiderman-no-way-home',
-    },
-  ];
+  generos = [];
 
+  listaFilmes: IListaFilmes;
   constructor(
     public alertController: AlertController,
     public toastController: ToastController,
     public dadosService: DadosService,
+    public filmeService: FilmeService,
+    public genreService: GenresService,
     public route: Router
   ) {}
 
-  exibirFilme(filme: IFilme) {
+  buscarFilmes(evento: any) {
+    console.log(evento.target.value);
+    const search = evento.target.value;
+    if (search && search.trim() !== '') {
+      this.filmeService.searchMovie(search).subscribe((dados) => {
+        console.log(dados);
+        this.listaFilmes = dados;
+      });
+    }
+  }
+
+  exibirFilme(filme: IFilmeApi) {
     this.dadosService.saveData('filme', filme);
     this.route.navigateByUrl('/dados-filme');
   }
@@ -89,5 +77,14 @@ export class Tab1Page {
       color: 'medium',
     });
     toast.present();
+  }
+
+  ngOnInit() {
+    this.genreService.searchGenre().subscribe(dados =>{
+      console.log('Generos: ', dados.genres);
+      dados.genres.forEach(genero => {
+        this.generos[genero.id] = genero.name;
+      });
+    });
   }
 }
