@@ -11,24 +11,19 @@ export class DadosService {
   saveData(index: string, dados: any): boolean {
     if (index) {
       this.dados[index] = dados;
-    } else {
-      return false;
+      return true;
     }
-    return true;
+    return false;
   }
 
   getData(index: string): any {
     if (index) {
       return this.dados[index];
-    } else {
-      return null;
     }
+    return null;
   }
 
-  deleteData(index: string): boolean{
-    if(index){
-      return delete this.dados[index];
-    }
-
+  deleteData(index: string): boolean {
+    return delete this.dados[index];
   }
 }

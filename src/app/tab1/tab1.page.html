@@ -10,7 +10,7 @@
 <ion-content [fullscreen]="true" color="light">
   <ion-list>
     <ion-item-sliding *ngFor="let filme of listaVideos">
-      <ion-item lines="full" [routerLink]="filme.pagina">
+      <ion-item lines="full" (click)="exibirFilme(filme)">
         <ion-thumbnail slot="start">
           <img
             [src]="filme.thumbnail"

@@ -13,6 +13,10 @@ const routes: Routes = [
   {
     path: 'spiderman-no-way-home',
     loadChildren: () => import('./filmes/spiderman-no-way-home/spiderman-no-way-home.module').then( m => m.SpidermanNoWayHomePageModule)
+  },
+  {
+    path: 'dados-filme',
+    loadChildren: () => import('./dados-filme/dados-filme.module').then( m => m.DadosFilmePageModule)
   }
 ];
 @NgModule({
