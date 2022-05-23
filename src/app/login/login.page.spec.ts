@@ -1,19 +1,19 @@
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { IonicModule } from '@ionic/angular';
 
-import { SonicTheHedgehogTwoPage } from './sonic-the-hedgehog-two.page';
+import { LoginPage } from './login.page';
 
-describe('SonicTheHedgehogTwoPage', () => {
-  let component: SonicTheHedgehogTwoPage;
-  let fixture: ComponentFixture<SonicTheHedgehogTwoPage>;
+describe('LoginPage', () => {
+  let component: LoginPage;
+  let fixture: ComponentFixture<LoginPage>;
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-      declarations: [ SonicTheHedgehogTwoPage ],
+      declarations: [ LoginPage ],
       imports: [IonicModule.forRoot()]
     }).compileComponents();
 
-    fixture = TestBed.createComponent(SonicTheHedgehogTwoPage);
+    fixture = TestBed.createComponent(LoginPage);
     component = fixture.componentInstance;
     fixture.detectChanges();
   }));
